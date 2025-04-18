@@ -2,10 +2,11 @@ import { useState } from "react"
 
 const Tictactoe = () => {
 
-    const [board,setBoard] = useState(Array(9).fill(''))
+    const [board,setBoard] = useState(Array(9).fill(null))
     let [isNext,setIsNext] = useState(true)   
     let winner = calculateWinner(board)
-    let status = `${winner ? `winner is ${winner}` : `It's ${isNext ? `X` : `O`} turn`}`
+    let status =  `${winner === "Match Draw" ? winner : `${winner ? `winner is ${winner}` : `It's ${isNext ? `X` : `O`} turn`}`}`
+    // let draw = ''
 
 
     let handleClick = (index)=> {
@@ -35,6 +36,8 @@ const Tictactoe = () => {
                 return items[a]     
             }
         }
+
+        return board.includes(null) ? null : "Match Draw"
     
     }
 
