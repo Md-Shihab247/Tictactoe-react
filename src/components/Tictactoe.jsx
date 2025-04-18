@@ -6,16 +6,14 @@ const Tictactoe = () => {
     let [isNext,setIsNext] = useState(true)   
     let winner = calculateWinner(board)
     let status =  `${winner === "Match Draw" ? winner : `${winner ? `winner is ${winner}` : `It's ${isNext ? `X` : `O`} turn`}`}`
-    // let draw = ''
 
 
     let handleClick = (index)=> {
        if(board[index] || winner) return
-
-       let newBoard = [...board]
-       newBoard[index] = `${isNext ? `X` : `O`}`
-       setBoard(newBoard)
-       setIsNext(!isNext)    
+            let newBoard = [...board]
+            newBoard[index] = `${isNext ? `X` : `O`}`
+            setBoard(newBoard)
+            setIsNext(!isNext)    
     }
 
     function calculateWinner(items){
@@ -36,9 +34,7 @@ const Tictactoe = () => {
                 return items[a]     
             }
         }
-
         return board.includes(null) ? null : "Match Draw"
-    
     }
 
   return (
